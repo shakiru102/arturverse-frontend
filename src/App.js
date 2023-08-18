@@ -88,7 +88,10 @@ if(window.ethereum != undefined) {
           })
         }
       </div>
-      { transfer && <TranferModal account={account} onClose={() => setTransfer(false)} item={item} />}
+      { transfer && <TranferModal account={account} onClose={() => {
+        setTransfer(false)
+        fetchContract()
+      }} item={item} />}
     </div>
   );
 }
