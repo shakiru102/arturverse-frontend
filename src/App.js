@@ -22,12 +22,14 @@ function App() {
  const requestAccount = async () => {
    return await window.ethereum.request({ method: "eth_requestAccounts" })
  }
- window.ethereum.on('accountsChanged', async () => {
-  setAccount(null)
-  setOwner(false)
-  setBalance(0)
-  setAssets([])
-});
+if(window.ethereum != undefined) {
+  window.ethereum.on('accountsChanged', async () => {
+    setAccount(null)
+    setOwner(false)
+    setBalance(0)
+    setAssets([])
+  });
+}
  const fetchContract = async () => {
 
    const accounts = await requestAccount()
