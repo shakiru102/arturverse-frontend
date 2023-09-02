@@ -24,12 +24,10 @@ const NavBar = ({
      <div className='flex items-center gap-3'>
       
         <div className='underline'>{account.substring(0, 8)}</div> 
-        { 
-      owner  &&  
+        
       <span onClick={open} className='border cursor-pointer border-white rounded-md px-6 py-1'>
-        mint
+       { !owner ? "My NFT" : "Market Place" }
     </span>
-     }
      </div>: 
      <span onClick={fetchContract} className='border cursor-pointer border-white rounded-md px-6 py-1'>
         connect
