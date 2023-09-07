@@ -26,7 +26,7 @@ function Root() {
 
  const [errMessage, setErrMessage] = useState('Loading...')
 
- const fetchContract = useCallback(async () => {
+ const fetchContract = async () => {
   //  const accounts = await requestAccount()
   //   setAccount(accounts[0])
 
@@ -60,7 +60,7 @@ function Root() {
             setErrMessage('Could not retrieve assets')
         }
     // }
- },[assets])
+ }
 
 useEffect(() => {
 fetchContract()
@@ -84,7 +84,7 @@ if(!assets.length) return <div className='text-white text-center mt-20'>{errMess
                   <div className='text-gray-400 text-[14px] my-2 underline'>
                   <Link to={`/nft/${item.id}`} >#{item.id}</Link>
                   </div>
-                  { account !== null &&<div onClick={() => {
+                  { account !== null && <div onClick={() => {
                     setItem(item)
                     setTransfer(true)
                   }} className='border rounded-lg text-center py-2 cursor-pointer'>REDEEM</div>
@@ -95,8 +95,8 @@ if(!assets.length) return <div className='text-white text-center mt-20'>{errMess
         }
       </div>
       { transfer && <RedeemModal account={account} onClose={() => {
-        setTransfer(false)
         fetchContract()
+        setTransfer(false)
       }} item={item} />}
     </div>
   );

@@ -15,9 +15,11 @@ const Context = (props) => {
     const [userbalance, setUserBalance] = useState(0)
     const [item, setItem] = useState({})
     const [errMessage, setErrMessage] = useState('Loading...')
+
     if(window.ethereum !== undefined) {
         window.ethereum.on('accountsChanged', async (accounts) => {
             if(!accounts.length) {
+              console.log('ran');
                 setAccount(null)
                 setUserAssets([])
             }
