@@ -29,7 +29,7 @@ const Nft = () => {
   if(!nft) return <div className='text-white text-center mt-20'>{errMessage}.</div>
 
   return (
-    <div className='w-[50%] flex mx-auto my-28 gap-11 text-white p-10'>
+    <div className='md:w-[50%] flex flex-col md:flex-row mx-auto my-28 gap-11 text-white p-10'>
         <div className='flex-1'>
         <img src={nft.image.replace('ipfs://', 'https://nftstorage.link/ipfs/')} alt={nft.name} />
         </div>

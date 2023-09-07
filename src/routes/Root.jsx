@@ -73,7 +73,7 @@ if(!assets.length) return <div className='text-white text-center mt-20'>{errMess
     <div>
      <div className='mt-28 text-white text-right w-[70%] mx-auto'>asset: { balance }</div>
      
-        <div className='grid grid-cols-3 w-[70%] mx-auto gap-4'>
+        <div className='grid grid-rows-1 md:grid-cols-3 w-[70%] mx-auto gap-4'>
         {
           assets.map((item, i ) => {
             return (

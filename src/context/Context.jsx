@@ -16,12 +16,15 @@ const Context = (props) => {
     const [item, setItem] = useState({})
     const [errMessage, setErrMessage] = useState('Loading...')
 
+
+
     if(window.ethereum !== undefined) {
         window.ethereum.on('accountsChanged', async (accounts) => {
             if(!accounts.length) {
-              console.log('ran');
                 setAccount(null)
                 setUserAssets([])
+                window.location.href = '/'
+                localStorage.setItem('isloggedin', JSON.stringify(false))
             }
             setAccount(accounts[0])
            
@@ -34,7 +37,7 @@ const Context = (props) => {
         const accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
       
          //  const accounts = await requestAccount()
-          if(accounts.length == 0) {
+          if(accounts.length === 0) {
             throw new Error("No account found, ensure you have a metamask wallet installed on your browser.")
           }
           setAccount(accounts[0])
@@ -61,6 +64,7 @@ const Context = (props) => {
                   setUserAssets(results)
                   setUserBalance(balanceOf.toString())
                   setOwner(true)
+                  localStorage.setItem('isloggedin', JSON.stringify(true))
               } catch (error) {
                   console.log('Error: ', error.message)
                   setErrMessage(error.message)
@@ -70,7 +74,10 @@ const Context = (props) => {
        }
 
        useEffect(() => {
-        requestAccount()
+        const loggedIn = JSON.parse(localStorage.getItem('isloggedin'))
+        if(loggedIn) {
+          requestAccount()
+        }
        },[account])
 
   return (

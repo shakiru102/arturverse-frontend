@@ -17,25 +17,25 @@ const NavBar = ({
   
 
   return (
-    <div className='text-white h-[50px] fixed top-0 w-full z-0 bg-blue-950 flex items-center justify-between px-10'>
-      <div className='text-[24px]' >Arturverse</div>
+    <div className='text-white h-[50px] fixed top-0 w-full z-0 bg-blue-950 flex items-center justify-between px-4 md:px-10'>
+      <div className='md:text-[24px]' >Arturverse</div>
      { account != null ? 
-     <div className='flex items-center gap-3'>
+     <div className='flex items-center text-[14px] px-3 md:text-[16px] gap-3'>
         <div className='underline'>{account.substring(0, 8)}</div> 
         
       <span onClick={() => {
           window.location.href = '/'
-      }} className='border cursor-pointer border-white rounded-md px-6 py-1'>
+      }} className='border cursor-pointer border-white text-[14px] px-3 md:text-[16px] rounded-md md:px-6 py-1'>
        {"Market Place" }
     </span> 
      <span onClick={() => {
           window.location.href = '/nft'
-    }} className='border cursor-pointer border-white rounded-md px-6 py-1'>
+    }} className='border cursor-pointer border-white text-[14px] px-3 md:text-[16px] rounded-md md:px-6 py-1'>
      { "My NFT" }
   </span>
      
      </div>: 
-     <span onClick={requestAccount} className='border cursor-pointer border-white rounded-md px-6 py-1'>
+     <span onClick={requestAccount} className='border  text-[14px] px-3 md:text-[16px]cursor-pointer border-white rounded-md md:px-6 py-1'>
         connect
      </span>
      }

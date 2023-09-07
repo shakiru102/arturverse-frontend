@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../context/Context'
 import { Link } from 'react-router-dom'
 import TransferModal from '../components/TransferModal'
@@ -14,11 +14,14 @@ const UserNft = () => {
             transfer, setTransfer,
             requestAccount
       } = useContext(UserContext)
+      useEffect(() => {
+        requestAccount()
+      },[])
       if(!userassets.length) return <div className='text-white text-center mt-20'>{errMessage}</div>
   return (
     <div>
         <div className='mt-28 text-white text-right w-[70%] mx-auto'>asset: { userbalance }</div>
-      <div className='grid grid-cols-3 w-[70%] mx-auto gap-4'>
+      <div className='grid grid-rows-1 md:grid-cols-3 w-[70%] mx-auto gap-4'>
         {
           userassets.map((item, i ) => {
             return (
