@@ -41,8 +41,8 @@ const UserNft = () => {
           })
         }
       </div>
-      { transfer && <TransferModal account={account} onClose={() => {
-        requestAccount()
+      { transfer && <TransferModal account={account} onClose={async () => {
+        await requestAccount()
         setTransfer(false)
       }} item={item} />}
     </div>

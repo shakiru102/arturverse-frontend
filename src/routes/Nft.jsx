@@ -37,6 +37,11 @@ const Nft = () => {
           <h1 className='text-[28px]'>#{nftId}</h1>
           <p className='text-[20px] '>{nft.name}</p>
           <p>{nft.description}</p>
+          {
+            nft.attributes && nft.attributes.map((item, i) => (
+              <p key={i}>{item.value}</p>
+            ))
+          }
         </div>
     </div>
   )

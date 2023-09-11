@@ -94,8 +94,8 @@ if(!assets.length) return <div className='text-white text-center mt-20'>{errMess
           })
         }
       </div>
-      { transfer && <RedeemModal account={account} onClose={() => {
-        fetchContract()
+      { transfer && <RedeemModal account={account} onClose={async () => {
+       await fetchContract()
         setTransfer(false)
       }} item={item} />}
     </div>
