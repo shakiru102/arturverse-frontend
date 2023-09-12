@@ -38,8 +38,10 @@ const Nft = () => {
           <p className='text-[20px] '>{nft.name}</p>
           <p>{nft.description}</p>
           {
-            nft.attributes && nft.attributes.map((item, i) => (
+            nft.attributes && nft.attributes.map((item, i) => item.trait_type != 'COA' ? (
               <p key={i}>{item.value}</p>
+            ): (
+              <p key={i} className='underline'><a href={item.value}>View Certificate Of Authenticity</a></p>
             ))
           }
         </div>
